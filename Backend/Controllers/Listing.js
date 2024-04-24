@@ -126,6 +126,49 @@ exports.deletelisting = async (req, res) => {
 }
 
 
+// Show all  Listing's
+exports.showalllisting=async(req,res)=>{
+    try {
+        let alllistings=await Listing.find({}).populate("owner");
+        return res.status(200).json({
+            success:true,
+            message:"Successfull",
+            data:alllistings,
+        })
+    } catch (error) {
+        return res.status(200).json({
+            success: false,
+            message: "error in show all listing in the listing controller",
+            data: error.message,
+        })
+    }
+}
+
+//  Listing's of a specific category
+exports.listingcat=async(req,res)=>{
+    try {
+        let {category}=req.body;
+        if(!category){
+            return res.status(200).json({
+                success:true,
+                message:"Category name is not presenst",
+            })
+        }
+        let catlisting=await Listing.find({category:category});
+        // send respoce
+        res.status(200).json({
+            success:true,
+            message:"Successfull",
+            data:catlisting,
+        })
+    } catch (error) {
+        return res.status(200).json({
+            success: false,
+            message: "error in Listing of a specifc category  in Listing controllers",
+            data: error.message,
+        })
+    }
+}
 // Edit A Listing's
 exports.editlisting=async(req,res)=>{
     try {

@@ -1,46 +1,46 @@
-const Listing=require("../Models/Listings");
+const Listing = require("../Models/Listings");
 const Review = require("../Models/Review");
 
 //------------------------ create Review------------------------------
-exports.createReview=async(req,res)=>{
+exports.createReview = async (req, res) => {
     try {
-        let {rating,review,listingId}=req.body;
+        let { rating, review, listingId } = req.body;
         // perform basic validation
-        if(!rating||!review){
+        if (!rating || !review) {
             return res.status(200).json({
-                success:false,
-                message:"Fill in all the details",
+                success: false,
+                message: "Fill in all the details",
             })
-        } 
+        }
 
         // check if the listing id valid or not 
-        let listinginfo=await Listing.findById(listingId);
-        if(!listinginfo){
+        let listinginfo = await Listing.findById(listingId);
+        if (!listinginfo) {
             return res.status(200).json({
-                success:false,
-                message:"Invalid Listing id",
+                success: false,
+                message: "Invalid Listing id",
             })
         }
         // if you are the owner of the listinig then you cannot create a revew
-        if(req.user._id.toString() ===listinginfo.owner.toString()){
+        if (req.user._id.toString() === listinginfo.owner.toString()) {
             return res.status(200).json({
-                success:false,
-                message:"Owner Can't post a revewi",
+                success: false,
+                message: "Owner Can't post a revewi",
             })
         }
         // pending a user can only post a review once 
         // create a review 
-        let newreview=await Review.create({
-            rating,review,createdBy:req.user._id,
+        let newreview = await Review.create({
+            rating, review, createdBy: req.user._id,
         })
         // save the reveiw's object id in the listing
-        let updatedlistinginfo=await Listing.findByIdAndUpdate(listingId,{
-            $push:{reviews:newreview._id},
-        },{new:true})
+        let updatedlistinginfo = await Listing.findByIdAndUpdate(listingId, {
+            $push: { reviews: newreview._id },
+        }, { new: true })
         // send the responce 
         res.status(200).json({
-            success:true,
-            message:"reveiw Created Successfully",
+            success: true,
+            message: "reveiw Created Successfully",
             updatedlistinginfo,
         })
     } catch (error) {
@@ -53,62 +53,91 @@ exports.createReview=async(req,res)=>{
 }
 
 // ---------------------------deleting Review----------------------------
-exports.deletereview=async(req,res)=>{
+exports.deletereview = async (req, res) => {
     try {
         // fetch data form req ki body 
-        let {listingId,reviewId}=req.body;
+        let { listingId, reviewId } = req.body;
         // bsic validation's
-        if(!reviewId||!listingId){
+        if (!reviewId || !listingId) {
             return res.status(200).json({
-                success:false,
-                message:"fill in all the details",
+                success: false,
+                message: "fill in all the details",
             })
         }
-        
+
         // check if review exist with this reviewId
-        let reveiwinfo=await Review.findById(reviewId).populate("createdBy");
+        let reveiwinfo = await Review.findById(reviewId).populate("createdBy");
         // console.log(reveiwinfo)
-        if(!reveiwinfo){
+        if (!reveiwinfo) {
             return res.status(200).json({
-                success:false,
-                message:"Invalid Reveiw ID, Reivew Doesn't exist",
+                success: false,
+                message: "Invalid Reveiw ID, Reivew Doesn't exist",
             })
         }
         // check if the curr user is the owner of the review
-        if(req.user._id.toString() !== reveiwinfo.createdBy._id.toString()){
+        if (req.user._id.toString() !== reveiwinfo.createdBy._id.toString()) {
             return res.status(200).json({
-                success:false,
-                message:"Only the reveiw Owner can delete the revivew",
+                success: false,
+                message: "Only the reveiw Owner can delete the revivew",
             })
         }
         // pending listing owner can also delte the listing
         // delete the reveiw 
         try {
-            let deletedreveiw=await Review.findByIdAndDelete(reviewId);
+            let deletedreveiw = await Review.findByIdAndDelete(reviewId);
         } catch (error) {
             return res.status(200).json({
-                success:false,
-                message:"Error in deleteing review from the review schema ",
-                data:error,
+                success: false,
+                message: "Error in deleteing review from the review schema ",
+                data: error,
             })
         }
         // remove the review id from the listing's review schema 
         try {
-            let revidlist=await Listing.findByIdAndUpdate(listingId,{
-                $pull:{reviews:{$eq:reveiwinfo._id}}
-            },{new:true})
+            let revidlist = await Listing.findByIdAndUpdate(listingId, {
+                $pull: { reviews: { $eq: reveiwinfo._id } }
+            }, { new: true })
         } catch (error) {
             return res.status(200).json({
-                success:false,
-                message:"Error in deleteing reviewid form the listing schema",
-                data:error,
+                success: false,
+                message: "Error in deleteing reviewid form the listing schema",
+                data: error,
             })
         }
 
         // send the responce 
         res.status(200).json({
+            success: true,
+            message: "Review Deleted SuccessfullY",
+        })
+    } catch (error) {
+        return res.status(200).json({
+            success: false,
+            message: "error while deleting the review",
+            data: error.message,
+        })
+    }
+}
+
+// ---------------------------Fetch  Review of a particular listing ----------------------------
+exports.getreview = async (req, res) => {
+    try {
+        let { listingId } = req.params;
+        console.log(listingId);
+        // basic validation's
+        let listinginfo = await Listing.findById(listingId).populate("reviews");
+        console.log(listinginfo)
+        if (!listinginfo) {
+            return res.status(200).json({
+                success: false,
+                message: "invalid Listingid",
+            })
+        }
+        let allreviews=listinginfo.reviews;
+        res.status(200).json({
             success:true,
-            message:"Review Deleted SuccessfullY",
+            message:"all reviews are found",
+            data:allreviews,
         })
     } catch (error) {
         return res.status(200).json({
