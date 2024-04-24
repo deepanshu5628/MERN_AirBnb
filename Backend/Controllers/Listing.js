@@ -119,7 +119,21 @@ exports.deletelisting = async (req, res) => {
     } catch (error) {
         return res.status(200).json({
             success: false,
-            message: "error while creating the listing",
+            message: "error while Deleting the listing",
+            data: error.message,
+        })
+    }
+}
+
+
+// Edit A Listing's
+exports.editlisting=async(req,res)=>{
+    try {
+        console.log("heelog ");
+    } catch (error) {
+        return res.status(200).json({
+            success: false,
+            message: "error while editing the listing",
             data: error.message,
         })
     }

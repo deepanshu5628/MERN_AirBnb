@@ -25,8 +25,10 @@ app.use(fileUpload({
 // Routes
 const userRoute=require("./Routes/User");
 const listingRoute=require("./Routes/Listing");
+const reviewRoute=require("./Routes/Review");
 app.use("/api/v1/auth",userRoute);
 app.use("/api/v1/listings",listingRoute);
+app.use("/api/v1/review",reviewRoute);
 
 // app is listening
 app.listen(port,(req,res)=>{

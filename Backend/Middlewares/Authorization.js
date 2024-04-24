@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
 exports.islogedin = async (req, res, next) => {
     try {
-        console.log("in is loged in middleware");
-        console.log();
         if (!req.headers.authorization) {
             return res.status(200).json({
                 success: false,
