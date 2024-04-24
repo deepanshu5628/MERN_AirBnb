@@ -23,7 +23,7 @@ const listingSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
-    loaction:{
+    location:{
         type:String,
         required:true,
     },
@@ -34,6 +34,7 @@ const listingSchema=new mongoose.Schema({
     owner:{
         type:mongoose.Types.ObjectId,
         ref:"User",
+        required:true,
     },
     category:{
         type:String,
