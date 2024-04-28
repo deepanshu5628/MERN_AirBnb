@@ -14,6 +14,8 @@ const port=process.env.port||4000;
 
 // requring requied middlewares
 app.use(express.json());
+const cors=require("cors");
+app.use(cors());
 
 // requiring file upload
 const fileUpload=require("express-fileupload");
