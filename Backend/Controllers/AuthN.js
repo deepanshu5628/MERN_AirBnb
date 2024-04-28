@@ -1,4 +1,5 @@
 require("dotenv").config();
+const validator=require("validator");
 const User = require("../Models/User");
 const Otp = require("../Models/Otp");
 const bcrypt = require("bcrypt");
@@ -16,6 +17,13 @@ exports.sendotp = async (req, res) => {
                 message: "Fill in all details",
             })
         }
+        // validations on email
+        if(!validator.isEmail(email)){
+            return res.status(200).json({
+                success: false,
+                message: "Please enter a valid email",
+            })
+        }
         // checking if the email is already exist in the db or not 
         let givenemail = await User.findOne({ email });
         if (givenemail) {
@@ -31,6 +39,7 @@ exports.sendotp = async (req, res) => {
         let optdb = await Otp.create(
             { email, otp }
         )
+        // console.log(optdb);
         // send the responce
         res.status(200).json({
             success: true,

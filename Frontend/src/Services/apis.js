@@ -5,9 +5,9 @@ const BASE_URL_LISTING=BASE_URL+"/api/v1/listings";
 const BASE_URL_REVIEW=BASE_URL+"/api/v1/review";
 
 export const user={
-    AUTH_API_LOGIN:BASE_URL_AUTH+"/login",
+    AUTH_API_LOGIN:BASE_URL_AUTH+"/login",    //done
     AUTH_API_SIGNUP:BASE_URL_AUTH+"/signup",
-    AUTH_API_SENDOTP:BASE_URL_AUTH+"/otp",
+    AUTH_API_SENDOTP:BASE_URL_AUTH+"/sendotp",
 }
 
 export const listing={

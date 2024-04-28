@@ -7,7 +7,6 @@ import {useDispatch,useSelector} from "react-redux"
 function Home() {
     let [showndata, setshowndata] = useState([]);
     let [loading,setloading]=useState(null);
-    console.log(showndata);
     const fetchalllisting=async()=>{
         setloading(true);
         let data =await  fetchalllistings();
