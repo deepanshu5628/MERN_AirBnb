@@ -7,8 +7,11 @@ import { GiElvenCastle, GiVillage } from "react-icons/gi";
 import { FaBed } from "react-icons/fa";
 import { PiWarehouseBold } from "react-icons/pi";
 import {fetchcatlistings} from "../../../Services/operations/Listings";
+import { setLoading } from "../../../Redux/Slices/authSlice";
+import {useDispatch, useSelector} from "react-redux";
 function Categorycom({fxncat,fxnall}) {
-
+    const dispatch=useDispatch();
+    let {loading}=useSelector((state)=>state.auth);
     let category = [
         {
             icon: <FaFire />,
@@ -68,9 +71,11 @@ function Categorycom({fxncat,fxnall}) {
     ]
 
     async function fetchcatlistdetails(name){
+        dispatch(setLoading(true));
         let data=await fetchcatlistings(name);
-        console.log(data.data.data);
+        // console.log(data.data.data);
         fxncat(data.data.data);
+        dispatch(setLoading(false));
     }
 
     function categorybtn(name){

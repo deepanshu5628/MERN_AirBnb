@@ -50,7 +50,7 @@ function Createlisting() {
                     <select name="Category" id="category" required className="w-full">
                         <option value="" disabled  selected>Choose A Category </option>
                         <option value="Farms">Farms</option>
-                        <option value="Iconic Bulidings">Iconic Bulidings</option>
+                        <option value="Iconic Bulidings">Iconic_Bulidings</option>
                         <option value="Beach">Beach</option>
                         <option value="Trams">Trams</option>
                         <option value="Castle">Castle</option>
@@ -58,7 +58,7 @@ function Createlisting() {
                         <option value="Monestrys">Monestrys</option>
                         <option value="Hotel">Hotel</option>
                         <option value="Villa">Villa</option>
-                        <option value="Farm House">Farm House</option>
+                        <option value="Farm House">Farm_House</option>
                     </select>
                     {/* loactiona */}
                     <label htmlFor="location">Location</label>

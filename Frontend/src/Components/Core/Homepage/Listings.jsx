@@ -1,5 +1,7 @@
 import { FaRupeeSign } from "react-icons/fa";
-function Listings({data,loading}) {
+import { useSelector } from "react-redux";
+function Listings({data}) {
+    let {loading}=useSelector((state)=>state.auth);
     return (
         <div className="min-h-[calc(100vh-14rem)] p-8 px-20 flex gap-6 flex-wrap">
             {
