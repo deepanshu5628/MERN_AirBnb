@@ -12,7 +12,7 @@ export const user={
 
 export const listing={
     LISTING_API_CREATE:BASE_URL_LISTING+"/listing",
-    LISTING_API_DELETE:BASE_URL_LISTING+"/listing",
+    LISTING_API_DELETE:BASE_URL_LISTING+"/listing", 
     LISTING_API_EDIT:BASE_URL_LISTING+"/listing",
     LISTING_API_GETALL:BASE_URL_LISTING+"/listings",   //done
     LISTING_API_LISTCAT:BASE_URL_LISTING+"/listingcat",    //done
