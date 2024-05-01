@@ -181,3 +181,29 @@ exports.editlisting=async(req,res)=>{
         })
     }
 }
+// Edit A Listing's
+exports.viewlisting=async(req,res)=>{
+    try {
+        let {id}=req.body;
+        let listinginfo=await Listing.findById(id).populate("owner");
+
+        if(!listinginfo){
+            return res.status(200).json({
+                success:false,
+                message:"Invalid Listing ",
+            })
+        }
+        // send responce 
+        res.status(200).json({
+            success:true,
+            message:"successfull",
+            data:listinginfo,
+        })
+    } catch (error) {
+        return res.status(200).json({
+            success: false,
+            message: "error while Viewing the listing",
+            data: error.message,
+        })
+    }
+}

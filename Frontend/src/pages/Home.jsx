@@ -21,7 +21,6 @@ function Home() {
     }, [])
 
     let {token}=useSelector((state)=>state.auth);
-    console.log("token si ",token);
     return (
         <div>
             <Categorycom fxncat={setshowndata} fxnall={fetchalllisting}/>

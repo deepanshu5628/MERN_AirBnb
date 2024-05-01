@@ -53,3 +53,36 @@ export const createlisting=async(data,token)=>{
         return data;
     }
 }
+
+// --------------------------------VIEW A LISTING ----------------- -----------------------------
+export const viewlisting=async(id)=>{
+    try {
+        let res=await axiosapiconnector("POST",listing.LISTING_API_VIEW,{id})
+        return res.data;
+    } catch (error) {
+        let data={
+            success:false,
+            message:"eror in Viewing a   listing data form backend",
+            data:error,
+        }
+        return data;
+    }
+}
+
+// -------------------------------DELETE A LISTING ----------------- -----------------------------
+export const deletelisting=async(id,token)=>{
+    try {
+        let res=await axiosapiconnector("DELETE",listing.LISTING_API_DELETE,{listingId:id},{
+            "Content-Type":"application/json",
+            "Authorization":`Bearer ${token}`
+        })
+        return res.data;
+    } catch (error) {
+        let data={
+            success:false,
+            message:"eror in Viewing a   listing data form backend",
+            data:error,
+        }
+        return data;
+    }
+}
