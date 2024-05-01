@@ -19,8 +19,8 @@ export const listing={
     LISTING_API_LISTCAT:BASE_URL_LISTING+"/listingcat",    //done
 }
 
-export const review={
-    REVIEW_API_CREATE:BASE_URL_REVIEW+"/create",
-    REVIEW_API_DELETE:BASE_URL_REVIEW+"/delete",
-    REVIEW_API_LISTINGREV:BASE_URL_REVIEW+"/getrev",
+export const reviewapi={
+    REVIEW_API_CREATE:BASE_URL_REVIEW+"/create",   //done
+    REVIEW_API_DELETE:BASE_URL_REVIEW+"/delete",    //done
+    REVIEW_API_LISTINGREV:BASE_URL_REVIEW+"/getrev",  //done
 }

@@ -122,11 +122,14 @@ exports.deletereview = async (req, res) => {
 // ---------------------------Fetch  Review of a particular listing ----------------------------
 exports.getreview = async (req, res) => {
     try {
-        let { listingId } = req.params;
-        console.log(listingId);
+        let { listingId } = req.body;
         // basic validation's
-        let listinginfo = await Listing.findById(listingId).populate("reviews");
-        console.log(listinginfo)
+        // let listinginfo = await Listing.findById(listingId).populate("reviews");
+        let listinginfo = await Listing.findById(listingId).populate({
+            path: 'reviews',
+            populate: { path: 'createdBy' }
+          })
+        // console.log(listinginfo)
         if (!listinginfo) {
             return res.status(200).json({
                 success: false,
