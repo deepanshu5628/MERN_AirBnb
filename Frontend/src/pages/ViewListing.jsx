@@ -63,7 +63,7 @@ const ViewListing = () => {
                                     {
                                         userinfo !== null && userinfo.email === currlistinginfo.owner.email && (
                                             <div className='flex gap-3 mt-5'>
-                                                <button className='p-2 bg-green-600 rounded-md text-black'>Edit</button>
+                                                {/* <button className='p-2 bg-green-600 rounded-md text-black'>Edit</button> */}
                                                 <button onClick={() => delbtn(currlistinginfo._id)} className='p-2 bg-black rounded-md text-white'>Delete</button>
                                             </div>
                                         )

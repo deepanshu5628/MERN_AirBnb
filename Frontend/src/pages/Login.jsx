@@ -26,8 +26,8 @@ function Login() {
         if (data.success) {
             dispatch(setToken(data.token));
             dispatch(setUserinfo(data.userinfo))
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("userinfo", data.userinfo);
+            localStorage.setItem("token",JSON.stringify( data.token));
+            localStorage.setItem("userinfo",JSON.stringify(data.userinfo));
             toast.success(data.message);
             navigate("/");
         }

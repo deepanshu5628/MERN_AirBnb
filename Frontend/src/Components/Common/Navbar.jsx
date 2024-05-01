@@ -27,7 +27,10 @@ function Navbar() {
                  flex items-center gap-3 text-white">Search <FaSearch /></button>
             </div>
             <div className="flex justify-between gap-3">
-                <button onClick={() => navigate("/new")} > AirBnb your home</button>
+                {
+                    token !==null &&   <button onClick={() => navigate("/new")} > AirBnb your home</button>
+                }
+              
                 {
                     token === null ? (<>
                         <button onClick={() => navigate("/signup")} className="font-semibold">SignUp</button>
