@@ -36,6 +36,7 @@ function Signup() {
     async function formsubmitehandelr(e) {
         e.preventDefault();
         let data = await signup(formdata);
+        console.log(data);
         if(data.success){
             toast.success(data.otp);
             navigate("/login");
