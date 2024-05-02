@@ -65,7 +65,7 @@ function Navbar() {
                         <button onClick={() => navigate("/signup")} className="font-semibold">SignUp</button>
                         <button onClick={() => navigate("/login")} className="font-semibold">Login</button>
                     </>) :(<>
-                    <button><img src={userinfo.image} className="rounded-full h-3/4"  alt="" /></button>
+                    <button onClick={()=>navigate("/dashboard/my-profile")}><img src={userinfo.image} className="rounded-full max-h-20 max-w-20"  alt="" /></button>
                 <button onClick={logoutbtn} className="font-semibold">Logout</button>
                     </>)
                 }

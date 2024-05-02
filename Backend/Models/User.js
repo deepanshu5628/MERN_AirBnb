@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
     additionalInformation: {
         type: mongoose.Types.ObjectId,
         ref: "Profile",
+        default:null,
     }
 })
 

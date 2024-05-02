@@ -207,3 +207,48 @@ exports.login = async (req, res) => {
         })
     }
 }
+
+exports.changePassword=async(req,res)=>{
+    try {
+        // fetch passs and newppas
+        let {password,confirmpassword}=req.body;
+        // fetch payload
+        let payload=req.user;
+        // perform validation
+        if(!payload){
+            return res.status(400).json({
+                success:false,
+                message:"User must be loged in to change the password",
+            });
+        }
+        // match password's
+        if(password!==confirmpassword){
+            return res.status(400).json({
+                success:false,
+                message:"password and confirm password should be the same",
+            });
+        }
+        // hash the pwd
+        let hashedpassword=await bcrypt.hash(password,10);
+        // update the password in the db 
+        let userdetails=await User.findOneAndUpdate({
+            email:payload.email,
+        },{
+            password:hashedpassword,
+        },{
+            new:true
+        });
+        // send respocne 
+        res.status(200).json({
+            success:true,
+            message:"password has been updated successfully",
+        });
+
+    } catch (error) {
+        return res.status(400).json({
+            success:false,
+            message:"error in changepassword controller",
+            data:error.message
+        });   
+    }
+}

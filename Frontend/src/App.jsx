@@ -9,6 +9,7 @@ import ViewListing from './pages/ViewListing';
 import Public from "./Components/Core/Auth/Public";
 import Private from './Components/Core/Auth/Private';
 import Categorylisting from "./pages/Categorylisting";
+import Dashboard from './pages/Dashboard';
 function App() {
   return (
     <>
@@ -41,6 +42,16 @@ function App() {
           </Private>
         }>
           <Route path='/new' Component={Createlisting} />
+        </Route>
+        <Route element={
+          <Private>
+            <Dashboard />
+          </Private>
+        }>
+         <Route path="/dashboard/my-profile" Component={Dashboard} />
+          <Route path="/dashboard/setting" Component={Dashboard} />
+          <Route path="/dashboard/enrolled-courses" Component={Dashboard} />
+          <Route path="/dashboard/cart" Component={Dashboard} />
         </Route>
 
       </Routes>

@@ -1,7 +1,7 @@
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 exports.islogedin = async (req, res, next) => {
     try {
-       
         let token = req.headers.authorization.split("Bearer ")[1];
         if (token==="null") {
             return res.status(200).json({
@@ -21,7 +21,7 @@ exports.islogedin = async (req, res, next) => {
         } catch (error) {
             return res.status(200).json({
                 success: false,
-                message: "Invalid Token ",
+                message: "Invalid Tokenn ",
             })
         }
         req.user = { ...payload };
