@@ -7,6 +7,7 @@ async function sendmail(email,otp){
             subject:"OTP From AIRBNB",
             text:otp,
         })
+        console.log(info);
     } catch (error) {
         let info={
             message:"error in sending mail ",

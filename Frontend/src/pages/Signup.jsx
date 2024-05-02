@@ -37,7 +37,7 @@ function Signup() {
         e.preventDefault();
         let data = await signup(formdata);
         if(data.success){
-            toast.success(data.message);
+            toast.success(data.otp);
             navigate("/login");
         }
         if(!data.success){

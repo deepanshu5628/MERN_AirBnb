@@ -44,6 +44,7 @@ exports.sendotp = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Mail Sended",
+            opt:otp,
         })
     } catch (error) {
         return res.status(400).json({
