@@ -27,6 +27,7 @@ function Navbar() {
         }
         dispatch(setLoading(true));
         let data=await searchlisting(searchinput);
+        setsearchinput("");
         if(data.success){
             dispatch(setshowndata(data.data));
         }
@@ -46,6 +47,7 @@ function Navbar() {
                 <input type="text"
                     className="rounded-2xl w-60 px-4 bg-slate-200"
                     placeholder="Search Destination..."
+                    value={searchinput}
                     onChange={(e)=>setsearchinput(e.target.value)}
                 />
                 <button 

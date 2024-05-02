@@ -211,7 +211,7 @@ exports.viewlisting=async(req,res)=>{
 exports.searchlisting=async(req,res)=>{
     try {
         let {query}=req.body;
-        let listinginfo=await Listing.find({title:{$regex:query}})        
+        let listinginfo=await Listing.find({title:{$regex:query,$options:"i"}})        
         // send responce 
         res.status(200).json({
             success:true,
