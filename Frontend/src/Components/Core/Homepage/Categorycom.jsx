@@ -13,61 +13,84 @@ import { setshowndata } from "../../../Redux/Slices/listingSlice";
 function Categorycom({fxnall}) {
     const dispatch=useDispatch();
     let {loading}=useSelector((state)=>state.auth);
+    let currclicked=0;
     let category = [
         {
+            id:1,
             icon: <FaFire />,
             heading: "Trending",
             name: "all",
+            state:false,
         },
         {
             icon: <GiFarmTractor />,
             heading: "Farms",
             name: "Farms",
+            state:false,
+            id:2,
         },
         {
             icon: <FaBuilding />,
             heading: "Iconic Bulidings",
             name: "Iconic_Bulidings",
+            state:false,
+            id:3,
         },
         {
             icon: <FaUmbrellaBeach/>,
             heading: "Beach",
             name: "Beach",
+            state:false,
+            id:4,
         },
         {
             icon: <LiaTramSolid />,
             heading: "Trams",
             name: "Trams",
+            state:false,
+            id:5,
         },
         {
             icon: <GiElvenCastle  />,
             heading: "Castle",
             name: "Castle",
+            state:false,
+            id:6,
         },
         {
             icon: <GiWineBottle  />,
             heading: "Wine",
             name: "Wine",
+            state:false,
+            id:7,
         },
         {
             icon: <FaBed />,
             heading: "Monestrys",
             name: "Monestrys",
+            state:false,
+            id:8,
         },
         {
             icon: <FaHotel/>,
             heading: "Hotel",
             name: "Hotel",
+            state:false,
+            id:9,
         },
         {
             icon: <GiVillage/>,
             heading: "Villa",
             name: "Villa",
+            state:false,
+            id:10,
         },
         {
             icon: <PiWarehouseBold/>,
             heading: "Farm House",
             name: "Farm_House",
+            state:false,
+            id:11,
         },
     ]
 
@@ -79,7 +102,10 @@ function Categorycom({fxnall}) {
         dispatch(setLoading(false));
     }
 
-    function categorybtn(name){
+    function categorybtn(name,index){
+        currclicked=index;
+        console.log(index,currclicked);
+        // category[id-1].state=true;
         if(name==="all"){
             fxnall();
         }else{
@@ -91,7 +117,7 @@ function Categorycom({fxnall}) {
         <div className="h-auto bg-slate-100 flex flex-wrap py-3 px-1 gap-8 justify-center cursor-default ">
             {
                 category.map((cat,index)=>{
-                    return <div key={index} onClick={()=>categorybtn(cat.name)} className="items-center flex flex-col cursor-pointer">
+                    return <div key={index}  onClick={()=>categorybtn(cat.name,index)} className={currclicked ===index ? "bg-blue-400 items-center flex flex-col cursor-pointer py-1 rounded-md":"items-center flex flex-col cursor-pointer"  }>
                         {cat.icon}
                         {cat.heading}
                     </div>
