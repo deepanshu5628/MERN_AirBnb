@@ -86,3 +86,19 @@ export const deletelisting=async(id,token)=>{
         return data;
     }
 }
+
+
+// -------------------------------SEARCH  LISTINGS ----------------- -----------------------------
+export const searchlisting=async(data)=>{
+    try {
+        let res=await axiosapiconnector("POST",listing.LISTING_API_SEARCH,{query:data})
+        return res.data;
+    } catch (error) {
+        let data={
+            success:false,
+            message:"eror in searching listing data form backend",
+            data:error,
+        }
+        return data;
+    }
+}

@@ -17,6 +17,7 @@ export const listing={
     LISTING_API_EDIT:BASE_URL_LISTING+"/listing",
     LISTING_API_GETALL:BASE_URL_LISTING+"/listings",   //done
     LISTING_API_LISTCAT:BASE_URL_LISTING+"/listingcat",    //done
+    LISTING_API_SEARCH:BASE_URL_LISTING+"/listing/search",
 }
 
 export const reviewapi={

@@ -5,15 +5,17 @@ import { useState ,useEffect} from "react";
 import {fetchalllistings} from "../Services/operations/Listings";
 import {useDispatch,useSelector} from "react-redux";
 import {setLoading} from "../Redux/Slices/authSlice";
+import {setshowndata} from "../Redux/Slices/listingSlice";
 function Home() {
     const dispatch=useDispatch();
-    let [showndata, setshowndata] = useState([]);
+    let {showndata}=useSelector((state)=>state.lists);
+    // let [showndata, setshowndata] = useState([]);
     let {loading}=useSelector((state)=>state.auth);
     // let [loading,setloading]=useState(null);
     const fetchalllisting=async()=>{
         dispatch(setLoading(true));
         let data =await  fetchalllistings();
-        setshowndata(data.data.data);
+        dispatch(setshowndata(data.data.data));
         dispatch(setLoading(false));
     }
     useEffect(() => {
@@ -23,7 +25,7 @@ function Home() {
     let {token}=useSelector((state)=>state.auth);
     return (
         <div>
-            <Categorycom fxncat={setshowndata} fxnall={fetchalllisting}/>
+            <Categorycom  fxnall={fetchalllisting}/>
             <Listings data={showndata}   />
             <Footer />
         </div>

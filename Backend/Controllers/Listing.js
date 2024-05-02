@@ -207,3 +207,22 @@ exports.viewlisting=async(req,res)=>{
         })
     }
 }
+// Edit A Listing's
+exports.searchlisting=async(req,res)=>{
+    try {
+        let {query}=req.body;
+        let listinginfo=await Listing.find({title:{$regex:query}})        
+        // send responce 
+        res.status(200).json({
+            success:true,
+            message:"successfull",
+            data:listinginfo,
+        })
+    } catch (error) {
+        return res.status(200).json({
+            success: false,
+            message: "error while Searching the listing",
+            data: error.message,
+        })
+    }
+}

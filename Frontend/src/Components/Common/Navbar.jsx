@@ -2,14 +2,38 @@ import { FaSearch } from "react-icons/fa";
 import { IoCompassOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setToken ,ressetSlice} from "../../Redux/Slices/authSlice";
+import { setToken,setLoading ,ressetSlice} from "../../Redux/Slices/authSlice";
+import { useState } from "react";
+import {toast} from "react-toastify";
+import {searchlisting} from "../../Services/operations/Listings";
+import {setshowndata} from "../../Redux/Slices/listingSlice";
 function Navbar() {
     const navigate = useNavigate();
     const dispatch=useDispatch();
-    const {token,userinfo} = useSelector((state) => state.auth);
+    const [searchinput,setsearchinput]=useState("");
+    const {token,userinfo,loading} = useSelector((state) => state.auth);
+    
+    // fxn
     function logoutbtn(){
         dispatch(ressetSlice());
-        navigate("/");   
+        navigate("/");  
+        toast.success("Loged Out");
+    }
+
+    // fxn of Seacch
+    async function serchbtn(){
+        if(searchinput.length ===0){
+            return ;
+        }
+        dispatch(setLoading(true));
+        let data=await searchlisting(searchinput);
+        if(data.success){
+            dispatch(setshowndata(data.data));
+        }
+        if(!data.success){
+            toast.error("errro in search command");
+        }
+        dispatch(setLoading(false));
     }
     return (
         <div className="h-16  bg-slate-200 w-full text-black 
@@ -22,8 +46,11 @@ function Navbar() {
                 <input type="text"
                     className="rounded-2xl w-60 px-4 bg-slate-200"
                     placeholder="Search Destination..."
+                    onChange={(e)=>setsearchinput(e.target.value)}
                 />
-                <button className="p-3 bg-pink-500 rounded-2xl
+                <button 
+                onClick={serchbtn}
+                className="p-3 bg-pink-500 rounded-2xl
                  flex items-center gap-3 text-white">Search <FaSearch /></button>
             </div>
             <div className="flex justify-between gap-3">
