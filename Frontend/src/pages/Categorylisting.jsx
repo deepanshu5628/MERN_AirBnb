@@ -1,3 +1,4 @@
+import React from 'react'
 import Categorycom from "../Components/Core/Homepage/Categorycom";
 import Footer from "../Components/Common/Footer";
 import Listings from "../Components/Core/Homepage/Listings";
@@ -6,7 +7,7 @@ import {fetchalllistings} from "../Services/operations/Listings";
 import {useDispatch,useSelector} from "react-redux";
 import {setLoading} from "../Redux/Slices/authSlice";
 import {setshowndata} from "../Redux/Slices/listingSlice";
-function Home() {
+const Categorylisting = () => {
     const dispatch=useDispatch();
     let {showndata}=useSelector((state)=>state.lists);
     // let [showndata, setshowndata] = useState([]);
@@ -19,18 +20,18 @@ function Home() {
         localStorage.setItem("showndata",JSON.stringify(data.data.data));
         dispatch(setLoading(false));
     }
-    useEffect(() => {
-        fetchalllisting();
-    }, [])
+    // useEffect(() => {
+    //     fetchalllisting();
+    // }, [])
 
     let {token}=useSelector((state)=>state.auth);
     return (
         <div>
-            <Categorycom  fxnall={fetchalllisting}/>
-            <Listings data={showndata}   />
+            <Categorycom fxnall={fetchalllisting} />
+            <Listings data={showndata} />
             <Footer />
         </div>
     )
 }
 
-export default Home;
+export default Categorylisting

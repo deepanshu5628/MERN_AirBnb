@@ -10,10 +10,12 @@ import {fetchcatlistings} from "../../../Services/operations/Listings";
 import { setLoading } from "../../../Redux/Slices/authSlice";
 import {useDispatch, useSelector} from "react-redux";
 import { setshowndata } from "../../../Redux/Slices/listingSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 function Categorycom({fxnall}) {
     const dispatch=useDispatch();
+    const navigate=useNavigate();
+    const location=useLocation();
     let {loading}=useSelector((state)=>state.auth);
-    let currclicked=0;
     let category = [
         {
             id:1,
@@ -93,31 +95,33 @@ function Categorycom({fxnall}) {
             id:11,
         },
     ]
-
+    let currpath=location.pathname.split("/")[2];
     async function fetchcatlistdetails(name){
         dispatch(setLoading(true));
         let data=await fetchcatlistings(name);
         // console.log(data.data.data);
         dispatch(setshowndata(data.data.data));
+        localStorage.setItem("showndata",JSON.stringify(data.data.data));
         dispatch(setLoading(false));
     }
 
     function categorybtn(name,index){
-        currclicked=index;
-        console.log(index,currclicked);
-        // category[id-1].state=true;
+
         if(name==="all"){
             fxnall();
+            navigate(`/listing/${name}`)
+            
         }else{
             fetchcatlistdetails(name);
+            navigate(`/listing/${name}`)
         }
     }
 
     return (
-        <div className="h-auto bg-slate-100 flex flex-wrap py-3 px-1 gap-8 justify-center cursor-default ">
+        <div  className="h-auto bg-slate-100 flex flex-wrap py-3 px-1 gap-8 justify-center cursor-default ">
             {
                 category.map((cat,index)=>{
-                    return <div key={index}  onClick={()=>categorybtn(cat.name,index)} className={currclicked ===index ? "bg-blue-400 items-center flex flex-col cursor-pointer py-1 rounded-md":"items-center flex flex-col cursor-pointer"  }>
+                    return <div key={index}  onClick={()=>categorybtn(cat.name,index)} className={currpath ===cat.name?"items-center flex flex-col cursor-pointer bg-blue-600 rounded-md p-1" :  "items-center flex flex-col cursor-pointer"}>
                         {cat.icon}
                         {cat.heading}
                     </div>

@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import ViewListing from './pages/ViewListing';
 import Public from "./Components/Core/Auth/Public";
 import Private from './Components/Core/Auth/Private';
+import Categorylisting from "./pages/Categorylisting";
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' Component={Home} />
         <Route path='/view' Component={ViewListing} />
+        <Route path='/listing/:category' Component={Categorylisting} />
 
         {/* prvate routes */}
         <Route element={
