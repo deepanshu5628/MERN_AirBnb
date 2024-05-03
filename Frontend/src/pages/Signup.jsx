@@ -26,7 +26,7 @@ function Signup() {
     async function sendotpbtn() {
         let res = await sendotp({ email: formdata.email })
         if (res.success) {
-            toast.success(res.message);
+            toast.success(res.otp);
         }
         if (!res.success) {
             toast.error(res.message);
@@ -36,9 +36,8 @@ function Signup() {
     async function formsubmitehandelr(e) {
         e.preventDefault();
         let data = await signup(formdata);
-        console.log(data);
         if(data.success){
-            toast.success(data.otp);
+            toast.success(data.message);
             navigate("/login");
         }
         if(!data.success){
