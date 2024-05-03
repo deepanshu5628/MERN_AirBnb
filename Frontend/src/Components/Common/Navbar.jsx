@@ -37,7 +37,7 @@ function Navbar() {
         dispatch(setLoading(false));
     }
     return (
-        <div className="h-16  bg-slate-200 w-full text-black 
+        <div className="min-h-16 max-h-fit  bg-slate-200 w-full text-black py-2  flex-wrap
         flex justify-between items-center px-5 cursor-default border-b-black border-b-2">
             <div className="flex gap-3 items-center">
                 <IoCompassOutline onClick={() => navigate("/")} className="text-5xl text-pink-500" />
