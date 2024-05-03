@@ -1,4 +1,4 @@
-const transporter=require("../config");
+const {transporter}=require("../config");
 async function sendmail(email,otp){
     let info;
     try {
@@ -7,7 +7,7 @@ async function sendmail(email,otp){
             subject:"OTP From AIRBNB",
             text:otp,
         })
-        console.log(info);
+        // console.log(info);
     } catch (error) {
         let info={
             message:"error in sending mail ",

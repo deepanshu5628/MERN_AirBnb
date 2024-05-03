@@ -16,8 +16,14 @@ const otpSchema=new mongoose.Schema({
     }
 })
 otpSchema.post("save",async(doc)=>{
-    console.log("requrest revied");
-    await sendmail(doc.email,doc.otp);
+    // console.log("requrest revied");
+    let res;
+    try {
+         res= await sendmail(doc.email,doc.otp.toString());
+    } catch (error) {
+        console.log(error);
+    }
+//    console.log("responce in the otp modal ",res);
 })
 const otp=mongoose.model("otp",otpSchema);
 module.exports=otp;
