@@ -26,7 +26,7 @@ const Categorylisting = () => {
 
     let {token}=useSelector((state)=>state.auth);
     return (
-        <div>
+        <div className='pt-7'>
             <Categorycom fxnall={fetchalllisting} />
             <Listings data={showndata} />
             <Footer />

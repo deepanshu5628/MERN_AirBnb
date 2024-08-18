@@ -46,7 +46,7 @@ const Reviewmodal = ({listingId}) => {
     }
 
     return (
-        < div className='min-h-44 w-[60%] flex justify-center items-center my-3 bg-gray-200'>
+        < div className='min-h-44 w-full md:w-[60%] flex justify-center items-center my-3 bg-gray-200'>
             {
                 loading ? <div> <div className='loader'></div></div> : (
                     <div className='w-full flex bg-gray-200 flex-col gap-4  my-2  p-8  '>

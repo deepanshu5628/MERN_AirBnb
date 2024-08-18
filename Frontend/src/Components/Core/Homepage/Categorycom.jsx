@@ -118,7 +118,7 @@ function Categorycom({fxnall}) {
     }
 
     return (
-        <div  className="h-auto bg-slate-100 flex flex-wrap py-3 px-1 gap-8 justify-center cursor-default ">
+        <div  className="h-auto bg-slate-100 flex flex-wrap py-3 pt-20 px-1 gap-8 justify-center cursor-default ">
             {
                 category.map((cat,index)=>{
                     return <div key={index}  onClick={()=>categorybtn(cat.name,index)} className={currpath ===cat.name?"items-center flex flex-col cursor-pointer bg-blue-600 rounded-md p-1" :  "items-center flex flex-col cursor-pointer"}>

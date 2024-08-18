@@ -29,7 +29,6 @@ function Sidebar() {
       path: "/dashboard/setting",
       type: "all",
       icon: "VscHistory",
-      type: "all",
     },
   
   ];

@@ -42,11 +42,11 @@ function Createlisting() {
         setimage(inputimg);
     }
     return (
-        <div className="bg-slate-100 h-[calc(100vh-4rem)] w-full flex flex-col items-center max-h-lvh">
-            <div className="w-[50%] bg-gray-200 flex-col my-3  p-10 ">
+        <div className="bg-slate-100 h-[calc(100vh-4rem)] py-20 w-full px-2 flex flex-col items-center max-h-lvh">
+            <div className="mx-2 w-full md:w-[50%] bg-gray-200 flex-col my-3 rounded-md p-5 md:p-10 ">
                 {
                     loading ? <div className="flex justify-center items-center   h-[calc(100vh-16.5rem)]" > <div className="loader"></div></div> : <>
-                        <p className="text-3xl cursor-default">Create New Listing</p>
+                        <p className="text-2xl md:text-3xl font-semibold cursor-default">Create New Listing</p>
                         <form onSubmit={handleSubmit((data) => handleformdata(data))} >
                             {/* title */}
                             <label htmlFor="title">Title</label>
@@ -112,7 +112,7 @@ function Createlisting() {
                                 id="category"
                                 required
                                 {...register("category", { required: true })}
-                                className="w-full"
+                                className="w-full  min-h-fit"
                             >
                                 <option value="" disabled selected>Choose A Category </option>
                                 <option value="Farms">Farms</option>
