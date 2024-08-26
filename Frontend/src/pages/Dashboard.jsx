@@ -12,7 +12,8 @@ function Dashboard() {
       {authloading ? (
         <div className="loader"></div>
       ) : (
-        <div className=" flex cursor-default  h-[calc(100vh-4rem)] w-[100%]  overflow-auto  ">
+        // <div className=" flex cursor-default  h-[calc(100vh-4rem)] w-[100%]  overflow-auto  ">
+        <div className=" flex cursor-default  h-[calc(100vh)]  w-[100%]  overflow-auto  ">
           <div className="w-[13%]">
           <Sidebar />
           </div>

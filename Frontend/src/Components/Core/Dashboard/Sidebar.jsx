@@ -37,14 +37,14 @@ function Sidebar() {
   const currpath=location.pathname;
   return (
     <div
-      className="bg-slate-200 fixed min-w-[13%] h-[calc(100vh-3.5rem)]   pl-1  py-4
+      className="bg-slate-200 fixed min-w-[13%] h-[calc(100vh-3.5rem)] mt-[4.2rem]  pl-1  py-4
           text-richblack-25"
     >
       {sidebarLinks.map((element, index) => {
         return (
           <div
             key={element.id}
-            className={`flex-col items-center justify-center py-2 px-2 cursor-pointer
+            className={`flex-col items-center justify-center py-2 px-2 cursor-pointer 
              pr-2  `}
           >
             {element.type === "all" && (

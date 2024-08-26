@@ -53,7 +53,7 @@ const ViewListing = () => {
                                 < div className='w-full md:w-[60%] flex  bg-gray-200 flex-col gap-4  my-2  p-8  '>
                                     <p className='font-semibold text-3xl'>{currlistinginfo.title}</p>
                                     <div className=''>
-                                        <img src={currlistinginfo.image} alt="img" className='max-h-60 w-2/3' />
+                                        <img src={currlistinginfo.image} alt="img" className='w-full md:max-h-60 md:w-2/3' />
                                     </div>
                                     <p>Owned BY:{currlistinginfo.owner.firstName} {currlistinginfo.owner.lastName}</p>
                                     <p>{currlistinginfo.description}</p>

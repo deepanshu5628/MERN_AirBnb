@@ -6,7 +6,7 @@ function Myprofile() {
   const { userinfo } = useSelector((state) => state.auth);
 
   return (
-    <div className="bg-slate-100 flex flex-col text-black justify-center items-center  gap-6 w-[100%]">
+    <div className="bg-yellow-100 flex flex-col text-black justify-center items-center pb-8  gap-6 w-[100%]">
       <h1 className="text-4xl mt-5 font-semibold text-richblack-25">My Profile</h1>
 
       {/* first section */}
