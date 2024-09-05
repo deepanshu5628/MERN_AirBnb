@@ -13,7 +13,7 @@ function Footer() {
                 <FaInstagram onClick={()=>window.location.href="https://www.instagram.com/depansu_ydv/"} className="cursor-pointer text-2xl text-blue-800" />
                 <IoLogoLinkedin onClick={()=>window.location.href="https://www.linkedin.com/in/deepanshuyaadav/"} className="cursor-pointer text-2xl text-blue-800" />
             </div>
-            <div className="w-8/12  flex justify-center">
+            <div className="w-full md:w-8/12  flex justify-center">
                 <p className="flex items-center"> <FaRegCopyright />WanderLust Private Limited </p>
             </div>
             <div className="w-8/12 flex justify-center ">

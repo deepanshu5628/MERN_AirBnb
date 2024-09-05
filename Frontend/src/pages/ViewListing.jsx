@@ -44,16 +44,16 @@ const ViewListing = () => {
         fetchlistinginfo(state);
     }, [])
     return (
-        <div className='w-full '>
+        <div className='w-full   pt-32 md:pt-24 '>
             {
-                loading ? <div className='flex justify-center items-center h-[calc(100vh-9.9rem)]'>  <div className='loader'></div></div> : (
+                loading ? <div className='flex justify-center  items-center h-[calc(100vh-9.9rem)]'>  <div className='loader'></div></div> : (
                     <div className='min-h-[calc(100vh-9.9rem)] flex justify-center'>
                         {
                             currlistinginfo !== null && <div className='flex flex-col w-full items-center'>
-                                < div className='w-[60%] flex  bg-gray-200 flex-col gap-4  my-2  p-8  '>
+                                < div className='w-full md:w-[60%] flex  bg-gray-200 flex-col gap-4  my-2  p-8  '>
                                     <p className='font-semibold text-3xl'>{currlistinginfo.title}</p>
                                     <div className=''>
-                                        <img src={currlistinginfo.image} alt="img" className='max-h-60 w-2/3' />
+                                        <img src={currlistinginfo.image} alt="img" className='w-full md:max-h-60 md:w-2/3' />
                                     </div>
                                     <p>Owned BY:{currlistinginfo.owner.firstName} {currlistinginfo.owner.lastName}</p>
                                     <p>{currlistinginfo.description}</p>

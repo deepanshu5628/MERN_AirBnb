@@ -9,7 +9,7 @@ const ViewReviews = ({ listingId }) => {
   let [loading, setLoading] = useState(false);
   let [allreviews,setallreviewws]=useState(null);
   const {token}=useSelector((state)=>state.auth);
-
+console.log(allreviews)
   // fxn
   async function fetchallrev(){
     setLoading(true);
@@ -40,7 +40,7 @@ const ViewReviews = ({ listingId }) => {
     fetchallrev();
   },[])
   return (
-    <div className='min-h-44 w-[60%] flex flex-col  my-3 p-4 bg-gray-200'>
+    <div className='min-h-44 w-full md:w-[60%] flex flex-col  my-3 p-4 bg-gray-200'>
       <p className="text-2xl font-semibold">All Reviews: </p>
       {
         loading ? <div className="flex items-center justify-center"> <div className='loader'></div></div> : (

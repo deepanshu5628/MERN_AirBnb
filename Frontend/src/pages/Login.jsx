@@ -39,10 +39,11 @@ function Login() {
         setvisible(!visible);
     }
     return (
-        <div className="bg-slate-100 h-[calc(100vh-4rem)] w-full flex flex-col items-center mi">
+        // <div className="bg-slate-100 h-[calc(100vh-4rem)] w-full flex flex-col items-center ">
+        <div className="bg-slate-100 pt-16 h-auto w-full flex flex-col items-center ">
             <div className=" min-h-[calc(100vh-10rem)]">
-                <div className="w-[100%] bg-gray-200 flex-col my-2 mt-14  p-10  ">
-                    <p className="text-5xl cursor-default">Login On WanderLust</p>
+                <div className="w-[100%] bg-gray-200 flex-col lg:my-2 my-7 lg:mt-14  p-4 rounded-md  ">
+                    <p className="text-xl font-semibold lg:text-4xl cursor-default">Login On WanderLust</p>
                     <form className="my-3">
                         <label htmlFor="email">Email:</label>
                         <br />
@@ -58,7 +59,7 @@ function Login() {
                             </span>
                         <button
                             onClick={loginbtn}
-                            className="p-2 bg-green-700 text-white rounded-md my-3">Login</button>
+                            className="p-2 bg-green-700 text-white rounded-md my-2">Login</button>
                     </form>
                 </div>
             </div>

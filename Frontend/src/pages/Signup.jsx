@@ -52,10 +52,10 @@ function Signup() {
         setvisible1(!visible1);
     }
     return (
-        <div className="bg-slate-100 h-[calc(100vh-4rem)] w-full flex flex-col items-center max-h-lvh">
-            <div className="min-h-[calc(100vh-10rem)]">
-                <div className="w-full  bg-gray-200 flex-col text-sm  p-10 border-black ">
-                    <p className="text-5xl cursor-default">Sign Up on WanderLust</p>
+        <div className="bg-slate-100   pt-20 h-auto w-full flex flex-col items-center ">
+            <div className=" min-h-[calc(100vh-13rem)]">
+                <div className="w-full  bg-gray-200 flex-col text-sm  p-5 rounded-md mb-3 border-black ">
+                    <p className="text-2xl font-semibold md:text-5xl cursor-default">Sign Up on WanderLust</p>
                     <form className="my-3">
                         <div className="flex justify-between">
                             <div className="w-[45%]">
@@ -75,7 +75,7 @@ function Signup() {
                         <br />
                         <label htmlFor="otp">OTP</label>
                         <br />
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center text-xs md:text-base justify-between">
                             <input type="number" id="otp" className="w-[80%]" name="otp" onChange={inputhandler} />
                             <button
                                 type="button"

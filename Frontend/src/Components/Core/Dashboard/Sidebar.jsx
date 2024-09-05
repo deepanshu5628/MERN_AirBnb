@@ -29,7 +29,6 @@ function Sidebar() {
       path: "/dashboard/setting",
       type: "all",
       icon: "VscHistory",
-      type: "all",
     },
   
   ];
@@ -38,19 +37,19 @@ function Sidebar() {
   const currpath=location.pathname;
   return (
     <div
-      className="bg-slate-200 fixed min-w-[13%] h-[calc(100vh-3.5rem)]   pl-1  py-4
+      className="bg-slate-200 md:fixed justify-evenly md:justify-start flex flex-row md:flex-col w-full md:w-[13%] md:h-[calc(100vh-3.5rem)] mt-[4.2rem]  pl-1  py-4
           text-richblack-25"
     >
       {sidebarLinks.map((element, index) => {
         return (
           <div
             key={element.id}
-            className={`flex-col items-center justify-center py-2 px-2 cursor-pointer
+            className={`  items-center justify-center py-2 px-2 cursor-pointer
              pr-2  `}
           >
             {element.type === "all" && (
               <Link to={element.path}>
-                <p className={` pl-2${element.path==currpath ? " border-l-4 py-2 w-full border-yellow-25 bg-green-700":null}`}>{element.name}</p>
+                <p className={` pl-2${element.path==currpath ? " border-l-4 p-2 w-full border-yellow-25 rounded-md bg-green-700":null}`}>{element.name}</p>
               </Link>
             )}
           </div>

@@ -17,12 +17,12 @@ function Profileinfo() {
   }
   return (
     <>
-      <section className="bg-gray-200 h-auto py-6 px-8 rounded-md w-[70%] ">
+      <section className="bg-gray-200 h-auto py-6 px-8 rounded-md w-full md:w-[70%] ">
         <h1 className="text-2xl font-semibold">Profile Information</h1>
         <div>
           <form onSubmit={handleSubmit(formsubmithandler)}>
             {/* first and last name  */}
-            <div className="flex justify-between min-w-full my-2 ">
+            <div className="flex flex-col md:flex-row md:justify-between min-w-full my-2 ">
               <label htmlFor="firstname" className="w-full">
                 First Name
                 <br />
@@ -55,7 +55,7 @@ function Profileinfo() {
               </label>
             </div>
             {/* dob and gender */}
-            <div className="flex justify-between min-w-full my-2">
+            <div className="flex flex-col md:flex-row md:justify-between min-w-full my-2">
               <label htmlFor="firstname" className="w-full">
                 DOB
                 <br />
@@ -92,7 +92,7 @@ function Profileinfo() {
               </label>
             </div>
             {/* contactno and about  */}
-            <div className="flex justify-between w-full my-2">
+            <div className="flex flex-col md:flex-row md:justify-between w-full my-2">
               <label htmlFor="contactNo" className="w-full">
                 Contact Number
                 <br />
