@@ -10,7 +10,7 @@ function Myprofile() {
       <h1 className="text-4xl mt-5 font-semibold text-richblack-25">My Profile</h1>
 
       {/* first section */}
-      <section className="bg-gray-200 h-auto py-6 rounded-md px-8 w-[70%] flex justify-between items-center">
+      <section className="bg-gray-200 h-auto py-6 rounded-md px-8 md:w-[70%] flex justify-between items-center">
         <div className="flex gap-3">
           {/* image div  */}
           <div>
@@ -39,7 +39,7 @@ function Myprofile() {
       </section>
 
       {/* second section about div */}
-      <section className="bg-gray-200 h-auto py-6 rounded-md px-8 w-[70%] flex-col  justify-between items-center">
+      <section className="bg-gray-200 h-auto py-6 rounded-md px-8 w-full md:w-[70%] flex-col  justify-between items-center">
         {/* first div  */}
         <div className="flex mb-4 justify-between w-full">
           <div>
@@ -67,7 +67,7 @@ function Myprofile() {
       </section>
 
       {/* third section */}
-      <section className="bg-gray-200 h-auto py-6 px-8 rounded-md w-[70%] flex-col justify-between items-center ">
+      <section className="bg-gray-200 h-auto py-6 px-8 rounded-md w-full md:w-[70%] flex-col justify-between items-center ">
         <div className="flex  justify-between w-full">
           <div>
             <p className="text-2xl font-bold">Personal Details</p>
@@ -85,7 +85,7 @@ function Myprofile() {
         </div>
         <div className="w-full flex-col ">
           {/* first and last name  */}
-          <div className="flex justify-start p-4">
+          <div className="flex flex-col md:flex-row md:justify-start p-4">
             <div className="w-full">
               <p className="text-richblack-300  mb-1">First Name</p>
               <p>{userinfo.firstName}</p>
@@ -97,7 +97,7 @@ function Myprofile() {
           </div>
 
           {/* email and phone no  */}
-          <div className="flex justify-start p-4 w-full">
+          <div className="flex flex-col md:flex-row md:justify-start p-4">
             <div className="w-full">
               <p className="text-richblack-300 mb-1">Email</p>
               <p>{userinfo.email}</p>
@@ -108,7 +108,7 @@ function Myprofile() {
             </div>
           </div>
           {/* gender and DOB */}
-          <div className="flex justify-start p-4">
+          <div className="flex flex-col md:flex-row md:justify-start p-4 ">
             <div className="w-full">
               <p className="text-richblack-300 mb-1">Gender</p>
               <p>{userinfo.additionalInformation ? userinfo.additionalInformation.gender : "Add Gender"}</p>

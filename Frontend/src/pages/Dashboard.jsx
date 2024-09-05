@@ -12,12 +12,12 @@ function Dashboard() {
       {authloading ? (
         <div className="loader"></div>
       ) : (
-        // <div className=" flex cursor-default  h-[calc(100vh-4rem)] w-[100%]  overflow-auto  ">
-        <div className=" flex cursor-default  h-[calc(100vh)]  w-[100%]  overflow-auto  ">
-          <div className="w-[13%]">
+        // <div className=" flex cursor-default  h,r67rfftg-[calc(100vh-4rem)] w-[100%]  overflow-auto  ">
+        <div className="flex flex-col md:flex-row cursor-default  h-[calc(100vh)]  w-[100%]  overflow-auto  ">
+          <div className="md:w-[13%]">
           <Sidebar />
           </div>
-          <div className="flex w-11/12 h-fit">
+          <div className="flex w-full h-fit">
           {currpath === "/dashboard/my-profile" ? <Myprofile /> : null}
           {currpath === "/dashboard/setting" ? <Setting /> : null}
           {currpath === "/dashboard/enrolled-courses" ? <Myprofile /> : null}

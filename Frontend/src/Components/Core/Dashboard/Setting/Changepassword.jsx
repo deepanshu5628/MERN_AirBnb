@@ -20,7 +20,7 @@ function Changepassword() {
   }
   return (
     <>
-      <section className="bg-gray-200 h-auto py-6 mb-10 px-8 rounded-md w-[70%]">
+      <section className="bg-gray-200 h-auto py-6 mb-10 px-8 rounded-md w-full md:w-[70%]">
         <h1 className="text-xl font-semibold">Password </h1>
         <form onSubmit={handleSubmit(formsubmithandler)}>
           <div className="flex justify-between min-w-full my-2 ">
