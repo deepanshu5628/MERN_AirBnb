@@ -1,9 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const getStoredData = () => {
+    const data = localStorage.getItem("showndata");
+    try {
+        return data ? JSON.parse(data) : [];  // Handle null and parse error
+    } catch (error) {
+        // console.error("Error parsing JSON from localStorage:", error);
+        return [];
+    }
+};
+
+
 const listingSlice=createSlice({
     name:"lists",
     initialState:{
-        showndata:localStorage.getItem("showndata")? JSON.parse(localStorage.getItem("showndata")):[],
+        showndata:getStoredData(),
     },
     reducers:{
         setshowndata:(state,actions)=>{
