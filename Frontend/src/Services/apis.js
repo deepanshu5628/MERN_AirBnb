@@ -1,5 +1,5 @@
-const BASE_URL="http://localhost:4000";
-// const BASE_URL="https://mern-airbnb-86cj.onrender.com";
+//const BASE_URL="http://localhost:4000";
+ const BASE_URL="https://mern-airbnb-86cj.onrender.com";
 
 const BASE_URL_AUTH=BASE_URL+"/api/v1/auth";
 const BASE_URL_LISTING=BASE_URL+"/api/v1/listings";
